@@ -58,6 +58,12 @@ export default {
     toggleReply() {
       this.replyOn = !this.replyOn;
     },
+    addScore() {
+      this.$store.commit('addScore', { id: this.data.id });
+    },
+    reduceScore() {
+      this.$store.commit('reduceScore', { id: this.data.id });
+    },
   },
   computed: {
     mobileSize() {

@@ -42,6 +42,42 @@ export default {
     state.comments.push(newComment);
     console.log(`new Comment: id-${newComment.id}`);
   },
+  addScore(state, payload) {
+    const comments = state.comments;
+
+    comments.forEach((comment) => {
+      if (comment.id === payload.id) {
+        comment.score++;
+      } else {
+        comment.replies.forEach((reply) => {
+          if (reply.id === payload.id) {
+            reply.score++;
+          }
+        });
+      }
+    });
+  },
+  reduceScore(state, payload) {
+    const comments = state.comments;
+
+    comments.forEach((comment) => {
+      if (comment.id === payload.id) {
+        comment.score--;
+      } else {
+        comment.replies.forEach((reply) => {
+          if (reply.id === payload.id) {
+            reply.score--;
+          }
+        });
+      }
+    });
+  },
+  toggleMobileOn(state) {
+    state.mobile = true;
+  },
+  toggleMobileOff(state) {
+    state.mobile = false;
+  },
   incrementId(state) {
     state.id++;
     console.log(`set ${state.id}`);

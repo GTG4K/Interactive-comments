@@ -7,7 +7,7 @@ const store = createStore({
   state() {
     return {
       id: 5,
-      mobile: true,
+      mobile: null,
       currentUser: {
         image: {
           png: './images/avatars/image-juliusomo.png',

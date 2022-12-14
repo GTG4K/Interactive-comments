@@ -9,6 +9,15 @@ import CommentsPage from './pages/CommentsPage.vue';
 export default {
   name: 'App',
   components: { CommentsPage },
+  created() {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 900) {
+        this.$store.commit('toggleMobileOn');
+      } else if (window.innerWidth > 900) {
+        this.$store.commit('toggleMobileOff');
+      }
+    });
+  },
 };
 </script>
 
